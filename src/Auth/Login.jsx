@@ -19,10 +19,14 @@ const Login = () => {
             }
         }).then(() => {
             console.log(values);
-            localStorage.setItem("currentUser",JSON.stringify(values.email))
+            localStorage.setItem("currentUser", JSON.stringify(values.email))
             alert("user login successfully")
             resetForm()
-            window.location.href="/dashboard"
+            setIni({
+                email: "",
+                password: ""
+            })
+            window.location.href = "/dashboard"
         }).catch((err) => {
             console.log(err);
 

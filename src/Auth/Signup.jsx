@@ -22,6 +22,11 @@ const Signup = ({ users, setUsers }) => {
 
             alert("user signed up successfully")
             resetForm()
+            setIni({
+                name: "",
+                email: "",
+                password: ""
+            })
         }).catch((err) => {
             console.log(err);
 
