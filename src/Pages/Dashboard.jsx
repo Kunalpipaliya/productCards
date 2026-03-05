@@ -102,7 +102,7 @@ const Dashboard = () => {
                                 ))}
                             </div>
                             {/* This hidden field ensures Formik picks up the value change */}
-                            <Field name="productrating" type="number" value={ini.productrating} />
+                            <Field name="productrating" type="number" className="d-none" value={ini.productrating} />
                         </div>
                         <button className="btn btn-primary" type='submit'>Publish</button>
                     </Form>
