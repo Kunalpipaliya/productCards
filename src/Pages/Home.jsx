@@ -43,11 +43,18 @@ const Home = () => {
                                         <p><i className="fa-solid fa-indian-rupee-sign"></i>{item.productprice}</p>
                                         <p className="text-decoration-line-through text-muted"><i className="fa-solid fa-indian-rupee-sign"></i>{item.productdummyprice}</p>
                                     </div>
-                                    <i className="fa-regular fa-star" ></i>
-                                    <i className="fa-regular fa-star"></i>
-                                    <i className="fa-regular fa-star"></i>
-                                    <i className="fa-regular fa-star"></i>
-                                    <i className="fa-regular fa-star"></i>
+                                    <div className="mb-2">
+                                        {[1, 2, 3, 4, 5].map((star) => (
+                                            <i
+                                                key={star}
+                                                className={
+                                                    star <= item.productrating
+                                                        ? "fa-solid fa-star text-warning" // Filled star
+                                                        : "fa-regular fa-star text-warning" // Empty star
+                                                }
+                                            ></i>
+                                        ))}
+                                    </div>
                                     <p>Rating : {item.productrating}</p>
                                     <hr />
                                     <div className="d-flex align-items-center gap-2">

@@ -85,9 +85,24 @@ const Dashboard = () => {
                             <label htmlFor="" className="form-label">Product Dummy Price</label>
                             <Field name="productdummyprice" type="number" className="form-control" placeholder="enter dummy price of product"></Field>
                         </div>
-                        <div className="form-group mb-2">
-                            <label htmlFor="" className="form-label">Product Rating</label>
-                            <Field name="productrating" type="number" className="form-control" placeholder="enter rating of product"></Field>
+                        <div className="form-group mb-3">
+                            <label className="form-label">Product Rating</label>
+                            <div className="d-flex gap-2">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <i
+                                        key={star}
+                                        className={
+                                            ini.productrating >= star
+                                                ? "fa-solid fa-star text-warning"
+                                                : "fa-regular fa-star text-warning"
+                                        }
+                                        style={{ cursor: "pointer", fontSize: "1.5rem" }}
+                                        onClick={() => setIni({ ...ini, productrating: star })}
+                                    ></i>
+                                ))}
+                            </div>
+                            {/* This hidden field ensures Formik picks up the value change */}
+                            <Field name="productrating" type="number" value={ini.productrating} />
                         </div>
                         <button className="btn btn-primary" type='submit'>Publish</button>
                     </Form>
