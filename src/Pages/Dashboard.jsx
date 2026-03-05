@@ -98,6 +98,7 @@ const Dashboard = () => {
                                      <div style={{ width: "100%", height: "220px", borderRadius: "8px", overflow: "hidden" }}>
                                         <img
                                             src={item.productimg}
+                                            alt={item.productname}
                                             style={{ width: "100%", height: "100%", objectFit: "contain" }}
                                         />
                                     </div>
