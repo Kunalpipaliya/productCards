@@ -6,7 +6,7 @@ const Home = () => {
     const token = "vZvNciqmBWGJi6nB"
     const [products, setProducts] = useState([])
     const fetchProducts = () => {
-        axios.get("https://generateapi.techsnack.online/api/card", {
+        axios.get("https://generateapi.techsnack.online/api/products", {
             headers: {
                 Authorization: token
             }

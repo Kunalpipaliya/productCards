@@ -7,7 +7,7 @@ import Header from './Component/Header';
 import Home from './Pages/Home';
 function App() {
   return (
-    <div className="App bg-light">
+    <div className="App">
       <BrowserRouter>
         <Switch>
           <Route path="/home">
@@ -18,6 +18,7 @@ function App() {
             <Header/>
             <Dashboard/>
           </Route>
+          
           <Route path="/signup">
             <Signup/>
           </Route>
