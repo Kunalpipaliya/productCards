@@ -134,7 +134,7 @@ const Productadd = () => {
                                 {/* This hidden field ensures Formik picks up the value change */}
                                 <Field name="productrating" type="number" className="d-none" value={values.productrating} />
                             </div>
-                            <button className="btn btn-primary" type='submit'>Publish</button>
+                            <button className="btn btn-primary w-100" type='submit'>Publish</button>
                         </Form>
                     )
                 }

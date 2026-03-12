@@ -8,11 +8,13 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom/cjs/react-router-
 import Productadd from './Productadd';
 import AddCategory from './AddCategory';
 import SideBar from '../Component/SideBar';
+import ManageCategory from './ManageCategory';
+import ManageProducts from './ManageProducts';
 const Dashboard = () => {
     const { path, url } = useRouteMatch()
     const token = "vZvNciqmBWGJi6nB"
     const currentUserEmail = JSON.parse(localStorage.getItem("currentUser"))
- 
+
     const [products, setProducts] = useState([])
     const fetchProducts = () => {
         axios.get("https://generateapi.techsnack.online/api/products", {
@@ -22,7 +24,7 @@ const Dashboard = () => {
         })
             .then((res) => {
                 console.log(res.data.Data);
-                setProducts(res.data.Data)
+                setProducts(res.data.Data||[])
             })
             .catch((err) => {
                 console.log(err);
@@ -32,27 +34,36 @@ const Dashboard = () => {
     useEffect(() => {
         fetchProducts()
     }, [])
-    
+
     const filteredPosts = products.filter((p) => p.publisher === currentUserEmail)
     return (
         <div className='p-4'>
             <Row className='mt-4'>
-                <Col md="3" className='h-100 bg-light rounded p-3 mt-3' style={{position:"sticky",top:"0"}}>
-                    <SideBar/>
+                <Col md="3" className='h-100 bg-light rounded p-3 mt-3' style={{ position: "sticky", top: "0" }}>
+                    <SideBar />
                 </Col>
                 <Col md="9" className='h-100'>
                     <Row className='container'>
                         <Switch>
+
+                            <Route path={`${path}/manageproducts`}>
+                                <Col md="12"><ManageProducts /></Col>
+                            </Route>
+                            <Route path={`${path}/managecategory`}>
+                                <Col md="12"><ManageCategory /></Col>
+                            </Route>
                             <Route path={`${path}/addcategory`}>
-                                <Col md="12"><AddCategory/></Col>
+                                <Col md="12"><AddCategory /></Col>
                             </Route>
                             <Route path={`${path}/addproducts`}>
-                                <Col md="12"><Productadd/></Col>
+                                <Col md="12"><Productadd /></Col>
                             </Route>
                             <Route path={`${path}`}>
 
                                 <h1 className='p-3'>Products</h1>
                                 {
+                                    filteredPosts.length === 0 && <h3 className='text-muted text-center'>No products published yet!</h3>
+                                }{
                                     filteredPosts.map((item, index) => {
                                         return (
                                             <Col md="6" key={index} className='mt-3'>
